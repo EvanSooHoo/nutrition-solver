@@ -16,7 +16,6 @@
     :headers="headers"
     :items="foodItems"
     :sort-by="[{ key: 'calories', order: 'asc' }]"
-    :search="search"
     class="elevation-1"
   >
     <template v-slot:top>
