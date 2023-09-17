@@ -173,6 +173,7 @@
   </v-data-table>
   <h1>Calories: {{ this.caloriesSum}}</h1>
   <h1>Protein: {{ this.proteinSum }}</h1>
+  <h1>Carbs: {{ this.carbsSum }}</h1>
 </template>
 
 <script>
@@ -216,6 +217,7 @@
       },
       caloriesSum: 335,
       proteinSum: 38,
+      carbsSum: 0
     }),
 
     computed: {
@@ -265,6 +267,7 @@
         this.editedItem = Object.assign({}, item)
         this.caloriesSum -= parseInt(item.calories);
         this.proteinSum -= parseInt(item.protein);
+        this.carbsSum -= parseInt(item.carbs);
         this.dialogDelete = true
       },
 
@@ -288,15 +291,64 @@
           this.editedIndex = -1
         })
       },
+      /*
+console.log('print full foodItems chart');
+        console.log(this.foodItems);
 
+        console.log('print item in editItem');
+        console.log(item);
+        
+        console.log('the attempt below fails. try to get the previous item');
+        console.log(item);
+        console.log('carbs of previous item');
+        console.log(item.carbs);
+        this.editedIndex = this.foodItems.indexOf(item);
+        let previousItemTemp = this.foodItems[this.editedIndex];
+        console.log(previousItemTemp);
+        console.log(this.foodItems[this.editedIndex]);
+        console.log('value of edited index')
+        console.log(this.editedIndex)
+        
+        this.editedItem = Object.assign({}, item);
+        console.log('carbs of new item');
+        console.log(this.editedItem.carbs);
+        console.log('print the previous object');
+        console.log(this.editedItem);
+
+        //grab previous values
+        
+
+        this.carbSum += item.carbs;
+        this.caloriesSum += item.calories;
+        this.proteinSum += item.protein;
+        this.dialog = true;
+      */
       save () {
+        console.log('es try to get the previous item');
+        console.log('old carb count');
+        console.log(this.foodItems[this.editedIndex].carbs);
+        console.log(this.foodItems[this.editedIndex]);
+        this.caloriesSum -= parseInt(this.foodItems[this.editedIndex].calories);
+        this.proteinSum -= parseInt(this.foodItems[this.editedIndex].protein);
+        this.carbsSum -= parseInt(this.foodItems[this.editedIndex].carbs);
+        console.log('the value of carbsSum has just decreased to');
+        console.log(this.carbsSum);
         if (this.editedIndex > -1) {
           Object.assign(this.foodItems[this.editedIndex], this.editedItem)
         } else {
           this.foodItems.push(this.editedItem)
         }
+        console.log('new carb count');
+        console.log(this.editedItem.carbs);
+        console.log('try to get the previous items');
+
+        
+
         this.caloriesSum += parseInt(this.editedItem.calories);
         this.proteinSum += parseInt(this.editedItem.protein);
+        this.carbsSum += parseInt(this.editedItem.carbs);
+        console.log('the value of carbsSum has just increased to');
+        console.log(this.carbsSum);
         this.close()
       },
     },
