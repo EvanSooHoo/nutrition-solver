@@ -324,31 +324,18 @@ console.log('print full foodItems chart');
         this.dialog = true;
       */
       save () {
-        console.log('es try to get the previous item');
-        console.log('old carb count');
-        console.log(this.foodItems[this.editedIndex].carbs);
-        console.log(this.foodItems[this.editedIndex]);
-        this.caloriesSum -= parseInt(this.foodItems[this.editedIndex].calories);
-        this.proteinSum -= parseInt(this.foodItems[this.editedIndex].protein);
-        this.carbsSum -= parseInt(this.foodItems[this.editedIndex].carbs);
-        console.log('the value of carbsSum has just decreased to');
-        console.log(this.carbsSum);
         if (this.editedIndex > -1) {
+          this.caloriesSum -= parseInt(this.foodItems[this.editedIndex].calories);
+          this.proteinSum -= parseInt(this.foodItems[this.editedIndex].protein);
+          this.carbsSum -= parseInt(this.foodItems[this.editedIndex].carbs);
           Object.assign(this.foodItems[this.editedIndex], this.editedItem)
         } else {
           this.foodItems.push(this.editedItem)
         }
-        console.log('new carb count');
-        console.log(this.editedItem.carbs);
-        console.log('try to get the previous items');
-
-        
 
         this.caloriesSum += parseInt(this.editedItem.calories);
         this.proteinSum += parseInt(this.editedItem.protein);
         this.carbsSum += parseInt(this.editedItem.carbs);
-        console.log('the value of carbsSum has just increased to');
-        console.log(this.carbsSum);
         this.close()
       },
     },
