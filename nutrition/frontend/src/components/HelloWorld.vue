@@ -255,7 +255,7 @@
           
         ]
       },
-
+      //https://codepen.io/Jayesh_v/pen/wvgjMva
       editItem (item) {
         this.editedIndex = this.foodItems.indexOf(item)
         this.editedItem = Object.assign({}, item)
@@ -291,38 +291,6 @@
           this.editedIndex = -1
         })
       },
-      /*
-console.log('print full foodItems chart');
-        console.log(this.foodItems);
-
-        console.log('print item in editItem');
-        console.log(item);
-        
-        console.log('the attempt below fails. try to get the previous item');
-        console.log(item);
-        console.log('carbs of previous item');
-        console.log(item.carbs);
-        this.editedIndex = this.foodItems.indexOf(item);
-        let previousItemTemp = this.foodItems[this.editedIndex];
-        console.log(previousItemTemp);
-        console.log(this.foodItems[this.editedIndex]);
-        console.log('value of edited index')
-        console.log(this.editedIndex)
-        
-        this.editedItem = Object.assign({}, item);
-        console.log('carbs of new item');
-        console.log(this.editedItem.carbs);
-        console.log('print the previous object');
-        console.log(this.editedItem);
-
-        //grab previous values
-        
-
-        this.carbSum += item.carbs;
-        this.caloriesSum += item.calories;
-        this.proteinSum += item.protein;
-        this.dialog = true;
-      */
       save () {
         if (this.editedIndex > -1) {
           this.caloriesSum -= parseInt(this.foodItems[this.editedIndex].calories);
